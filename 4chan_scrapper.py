@@ -14,11 +14,9 @@ def get_subject(soup) -> str | None:
 
 
 def create_thread_dir_name(subject: str | None, board: str) -> str:
-    if subject:
-        thread_dir = f"{board}_{subject}".replace(" ", "")
-        return re.sub(r'\W+', '', thread_dir)
-    else:
-        return str(random.randint(10000, 100000))
+    subject = subject if subject else str(random.randint(1000, 10000))
+    thread_dir = f"{board}_{subject}".replace(" ", "")
+    return re.sub(r'\W+', '', thread_dir)
 
 
 def create_thread_folder(subject: str | None, board: str) -> None:
